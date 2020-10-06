@@ -43,8 +43,7 @@ def _Encode(msgtype, transaction_id, *attrs):
   for attrtype, attrval in attrs:
     print(attrtype,attrval)
 
-  attrtext = ''.join(_EncodeAttr(attrtype, attrval)
-                     for attrtype, attrval in attrs)
+  attrtext = ''.join(_EncodeAttr(attrtype, attrval) for attrtype, attrval in attrs)
   pkt = (struct.pack('!HHI', msgtype, len(attrtext), MAGIC_COOKIE) +
          transaction_id +
          attrtext)
